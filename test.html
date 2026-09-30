@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forfait de base</title>
+<style>
+* {
+box-sizing: border-box;
+}
+
+body {
+margin: 0;
+padding: 24px 16px;
+}
+
+.pricing-list {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 16px;
+}
+
+.pricing {
+width: 100%;
+max-width: 320px;
+flex: 0 1 320px;
+background-color: #fff;
+box-shadow: 0 0 10px #ccc;
+padding: 10px;
+text-align: left;
+}
+
+.title {
+font-size: 22px;
+font-weight: bold;
+}
+
+.price {
+font-size: 18px;
+color: green;
+}
+
+.features {
+list-style: none;
+padding-left: 0;
+}
+
+.features li {
+padding: 4px;
+border-bottom: 1px solid #eee;
+}
+
+.btn {
+background: blue;
+color: white;
+padding: 10px 20px;
+border: none;
+margin-top: 10px;
+}
+
+.btn:hover {
+background: darkblue;
+}
+</style>
+</head>
+<body>
+
+<main class="pricing-list" id="pricing-cards"></main>
+
+<script>
+function Card(titre, prix, fonctionnalites) {
+const card = document.createElement("article");
+card.className = "pricing";
+
+const title = document.createElement("h2");
+title.className = "title";
+title.textContent = titre;
+card.append(title);
+
+const price = document.createElement("p");
+price.className = "price";
+price.textContent = prix;
+card.append(price);
+
+const features = document.createElement("ul");
+features.className = "features";
+fonctionnalites.forEach((fonctionnalite) => {
+const item = document.createElement("li");
+item.textContent = fonctionnalite;
+features.append(item);
+});
+card.append(features);
+
+const button = document.createElement("button");
+button.className = "btn";
+button.type = "button";
+button.textContent = "Démarrer l'essai";
+card.append(button);
+
+return card;
+}
+
+const pricingCards = document.querySelector("#pricing-cards");
+pricingCards.append(Card("Forfait de base", "9,99 $/mois", [
+"1 Go de stockage",
+"Assistance de base",
+"Toutes les fonctionnalités principales"
+]));
+</script>
+
+</body>
+</html>
